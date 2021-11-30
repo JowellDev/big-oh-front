@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   min-height: 60px;
   background-color: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -26,4 +26,9 @@
   border-radius: 3px;
   font-size: 16px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #e2e8f0;
+    color: #0d6efd;
+  }
 }

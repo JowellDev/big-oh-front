@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="mt-5">
+  <div class="container">
+    <app-search-bar></app-search-bar>
+    <div class="row mt-5">
+      <div
+        class="col-md-4"
+        *ngFor="let i of ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']"
+      >
+        <app-articles-list-item></app-articles-list-item>
+      </div>
+    </div>
+  </div>
+</div>
