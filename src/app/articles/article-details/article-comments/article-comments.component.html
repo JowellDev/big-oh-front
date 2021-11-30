@@ -74,7 +74,7 @@
       </div>
     </form>
   </div>
-  <div class="col-md-8 mt-2" *ngFor="let comment of comments">
+  <div class="col-md-8 mt-2" *ngFor="let comment of article.comments">
     <app-article-comments-card [comment]="comment"></app-article-comments-card>
   </div>
 </div>

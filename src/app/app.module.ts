@@ -18,6 +18,8 @@ import { ArticleContentComponent } from './articles/article-details/article-cont
 import { ArticleDescriptionComponent } from './articles/article-details/article-description/article-description.component';
 import { ArticleCommentsComponent } from './articles/article-details/article-comments/article-comments.component';
 import { ArticleCommentsCardComponent } from './articles/article-details/article-comments/article-comments-card/article-comments-card.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ArticleCommentsCardComponent } from './articles/article-details/article
     ArticleDescriptionComponent,
     ArticleCommentsComponent,
     ArticleCommentsCardComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

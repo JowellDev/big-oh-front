@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Comment } from '../../../../app/shared/comment.model';
+import { Article } from 'src/app/shared/article.model';
 
 @Component({
   selector: 'app-article-comments',
@@ -8,7 +8,7 @@ import { Comment } from '../../../../app/shared/comment.model';
   styleUrls: ['./article-comments.component.scss'],
 })
 export class ArticleCommentsComponent implements OnInit {
-  @Input() comments: Comment[];
+  @Input() article: Article;
   isWritingComment: boolean = false;
 
   constructor() {}
