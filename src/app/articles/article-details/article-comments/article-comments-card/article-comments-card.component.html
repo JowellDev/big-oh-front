@@ -1,7 +1,6 @@
 <div class="card mt-4">
   <div class="card-body">
     <h5 class="card-title">
-      <!-- display avatar and user name -->
       <img
         src="/assets/img/avatar.svg"
         class="rounded-circle me-2"
@@ -9,11 +8,11 @@
         height="30"
         alt=""
       />
-      <span class="text-muted">My beautiful name</span>
+      <span class="text-muted">{{ comment.user_email }}</span>
     </h5>
     <p class="card-text">
-      With supporting text below as a natural lead-in to additional content.
+      {{ comment.body }}
     </p>
-    <span class="text-muted">30/11/2021</span>
+    <span class="text-muted">{{ comment.created_at }}</span>
   </div>
 </div>

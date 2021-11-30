@@ -1,26 +1,23 @@
 <div class="description">
   <div class="card">
     <ul class="list-group list-group-flush">
-      <div class="list-group-item">
+      <div class="list-group-item bg-primary border rounded-2 text-white">
         <h5 class="fw-bolder">Auteur</h5>
-        <p class="text-muted">jowell, smart dev</p>
+        <p class="text-white">jowell, smart dev</p>
       </div>
       <div class="list-group-item">
         <h5 class="fw-bolder">Description</h5>
         <p class="text-muted">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-          dolores reprehenderit soluta, magnam accusantium reiciendis officiis
-          iure incidunt voluptate omnis. Perferendis veniam sapiente natus sit!
-          Praesentium culpa sit pariatur possimus?
+          {{ article.description }}
         </p>
       </div>
       <div class="list-group-item">
         <h5 class="fw-bolder">Catégorie</h5>
-        <p class="text-muted">Developpement web</p>
+        <p class="text-muted">{{ article.category }}</p>
       </div>
       <div class="list-group-item">
         <h5 class="fw-bolder">Date de publication</h5>
-        <p class="text-muted">30/11/2021</p>
+        <p class="text-muted">{{ article.published_at }}</p>
       </div>
     </ul>
   </div>

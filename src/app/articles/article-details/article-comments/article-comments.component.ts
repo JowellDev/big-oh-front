@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Comment } from '../../../../app/shared/comment.model';
 
 @Component({
   selector: 'app-article-comments',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-comments.component.scss'],
 })
 export class ArticleCommentsComponent implements OnInit {
+  @Input() comments: Comment[];
   isWritingComment: boolean = false;
 
   constructor() {}
@@ -14,5 +17,9 @@ export class ArticleCommentsComponent implements OnInit {
 
   toggleWritingComment() {
     this.isWritingComment = !this.isWritingComment;
+  }
+
+  addComment(form: NgForm) {
+    console.log(form.value.comment);
   }
 }

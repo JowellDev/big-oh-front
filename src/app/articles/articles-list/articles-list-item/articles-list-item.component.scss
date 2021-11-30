@@ -8,3 +8,10 @@
     height: 1.3rem;
   }
 }
+
+.card:hover {
+  h5 {
+    color: #1854e9;
+    transition: all 0.2s ease-in-out;
+  }
+}

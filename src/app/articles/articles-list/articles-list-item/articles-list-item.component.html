@@ -1,10 +1,9 @@
 <div class="card mb-4 shadow-sm">
   <img src="/assets/img/img3.jpg" class="card-img-top" alt="..." />
   <div class="card-body">
-    <h4 class="card-title fw-bolder">Article title</h4>
+    <h5 class="card-title fw-bolder">{{ article.title }}</h5>
     <p class="card-text">
-      ( Article description ) Lorem ipsum dolor sit amet consectetur adipisicing
-      elit. Quisquam, quidem.
+      {{ article.description }}
     </p>
     <div class="d-flex justify-content-between align-content-center">
       <div class="likes text-muted">
@@ -22,9 +21,11 @@
             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
           />
         </svg>
-        <span class="ms-4">2</span>
+        <span class="ms-4">{{ article.likes }}</span>
       </div>
-      <a routerLink="/articles/1" class="btn btn-primary btn-sm">Read more</a>
+      <a [routerLink]="['/articles', article.id]" class="btn btn-primary btn-sm"
+        >Read more</a
+      >
     </div>
   </div>
 </div>
