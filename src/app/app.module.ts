@@ -12,6 +12,10 @@ import { ArticlesListItemComponent } from './articles/articles-list/articles-lis
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { FooterComponent } from './footer/footer.component';
+import { ArticleContentComponent } from './articles/article-details/article-content/article-content.component';
+import { ArticleDescriptionComponent } from './articles/article-details/article-description/article-description.component';
+import { ArticleCommentsComponent } from './articles/article-details/article-comments/article-comments.component';
+import { ArticleCommentsCardComponent } from './articles/article-details/article-comments/article-comments-card/article-comments-card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { FooterComponent } from './footer/footer.component';
     SearchBarComponent,
     DropdownDirective,
     FooterComponent,
+    ArticleContentComponent,
+    ArticleDescriptionComponent,
+    ArticleCommentsComponent,
+    ArticleCommentsCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
