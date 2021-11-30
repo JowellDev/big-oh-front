@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   categories = [
+    { id: '', name: 'Toutes les categories', color: 'btn-light' },
     { id: 'algo', name: 'Algorithmie', color: 'btn-dark' },
     { id: 'web', name: 'Développement web', color: 'btn-warning' },
     { id: 'mobile', name: 'Développement mobile', color: 'btn-success' },
