@@ -30,7 +30,6 @@ export class ArticleCommentsComponent implements OnInit {
   }
 
   addComment(form: NgForm) {
-    this.article.comments.length++;
     this.articleService
       .commentArticle(this.article.id, form.value.comment)
       .subscribe();

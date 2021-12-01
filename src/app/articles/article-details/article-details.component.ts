@@ -29,6 +29,10 @@ export class ArticleDetailsComponent implements OnInit, OnDestroy {
       .subscribe((article: Article) => {
         this.article = article;
       });
+
+    this.articlesService.articleChanged.subscribe((article) => {
+      this.article = article;
+    });
   }
 
   ngOnDestroy(): void {
