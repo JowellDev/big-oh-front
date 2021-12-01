@@ -13,7 +13,7 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
   articles: Article[] = [];
   isLoading: boolean = false;
   paginationCurrentPage: number = 1;
-  pageItems: number = 6;
+  pageItems: number = 3;
   constructor(private articleService: ArticlesService) {}
 
   ngOnInit(): void {
