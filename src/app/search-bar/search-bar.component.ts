@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ArticlesService } from '../articles/articles.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,11 +11,16 @@ import { Component, OnInit } from '@angular/core';
 export class SearchBarComponent implements OnInit {
   isOpen: boolean = false;
 
-  constructor() {}
+  constructor(private articleService: ArticlesService) {}
 
   ngOnInit(): void {}
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;
+  }
+
+  onSearch(form: NgForm) {
+    const keyword = form.value.keyword;
+    this.articleService.fullTextSearch(keyword).subscribe();
   }
 }

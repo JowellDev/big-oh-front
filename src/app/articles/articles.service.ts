@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -15,26 +15,31 @@ export class ArticlesService {
   constructor(private http: HttpClient) {}
 
   getArticles() {
-    return this.http.get<Article[]>(this.baseUrl).pipe(
+    return this.http.get<Article[]>(this.baseUrl);
+  }
+
+  getArticle(id: string) {
+    return this.http.get<Article>(this.baseUrl + id);
+  }
+
+  fullTextSearch(keyword: string) {
+    const opts = { params: new HttpParams().set('keyword', keyword) };
+    return this.http.get<Article[]>(this.baseUrl + 'search', opts).pipe(
       map((articles) => {
         if (!articles) return [];
-        return (
-          articles &&
-          articles.map((article) => {
-            return { ...article };
-          })
-        );
-      }),
-      tap((articles) => {
-        this.articles = articles;
+        this.articlesChanged.next(articles);
+        return articles;
       })
     );
   }
 
-  getArticle(id: string) {
-    return this.http.get<Article>(this.baseUrl + id).pipe(
-      map((article) => {
-        return { ...article };
+  filterByCategory(category: string) {
+    const opts = { params: new HttpParams().set('category', category) };
+    return this.http.get<Article[]>(this.baseUrl + 'filter', opts).pipe(
+      map((articles) => {
+        if (!articles) return [];
+        this.articlesChanged.next(articles);
+        return articles;
       })
     );
   }

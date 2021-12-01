@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticlesService } from '../articles/articles.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,11 @@ export class HeaderComponent implements OnInit {
     { id: 'bc', name: 'Blockchain', color: 'btn-light' },
   ];
 
-  constructor() {}
+  constructor(private articleService: ArticlesService) {}
 
   ngOnInit(): void {}
+
+  filterBy(category: string) {
+    this.articleService.filterByCategory(category).subscribe();
+  }
 }

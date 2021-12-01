@@ -15,6 +15,9 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
   constructor(private articleService: ArticlesService) {}
 
   ngOnInit(): void {
+    this.articleService.articlesChanged.subscribe((articles) => {
+      this.articles = articles;
+    });
     this.subscription = this.articleService
       .getArticles()
       .subscribe((articles) => {

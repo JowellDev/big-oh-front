@@ -1,16 +1,18 @@
 import { Comment } from './comment.model';
 import { Like } from './like.model';
 
-export interface Article {
-  id: number;
-  title: string;
-  description: string;
-  body: string;
-  category: string;
-  likes: number;
-  is_published: boolean;
-  created_at: string;
-  published_at: string;
-  comments?: Comment[];
-  likers?: Like[];
+export class Article {
+  constructor(
+    public id: number,
+    public title: string,
+    public description: string,
+    public body: string,
+    public category: string,
+    public likes: number,
+    public is_published: boolean,
+    public created_at: string,
+    public published_at: string,
+    public comments?: Comment[],
+    public likers?: Like[]
+  ) {}
 }

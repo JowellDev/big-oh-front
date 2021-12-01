@@ -35,6 +35,7 @@
             class="btn me-2 mb-2"
             [ngClass]="[category.color]"
             type="button"
+            (click)="filterBy(category.id)"
           >
             {{ category.name }}
           </button>
