@@ -12,6 +12,8 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   articles: Article[] = [];
   isLoading: boolean = false;
+  paginationCurrentPage: number = 1;
+  pageItems: number = 6;
   constructor(private articleService: ArticlesService) {}
 
   ngOnInit(): void {

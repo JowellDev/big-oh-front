@@ -3,9 +3,21 @@
   <div class="container">
     <app-search-bar></app-search-bar>
     <div class="row mt-5">
-      <div class="col-md-4" *ngFor="let article of articles">
+      <div
+        class="col-md-4"
+        *ngFor="
+          let article of articles
+            | paginate
+              : { itemsPerPage: pageItems, currentPage: paginationCurrentPage }
+        "
+      >
         <app-articles-list-item [article]="article"></app-articles-list-item>
       </div>
     </div>
+    <pagination-controls
+      (pageChange)="paginationCurrentPage = $event"
+      previousLabel="Précedents"
+      nextLabel="Suivants"
+    ></pagination-controls>
   </div>
 </div>
