@@ -8,7 +8,7 @@
   min-height: 91.2vh;
 }
 
-.row {
+.container > .row {
   margin-right: -12px;
   margin-left: -12px;
   height: 100%;
@@ -31,4 +31,21 @@
     margin-top: 3rem;
     padding: 1rem;
   }
+}
+
+.form-section {
+  margin-top: 40px;
+  h3 {
+    letter-spacing: 4px;
+    color: #031b4e;
+  }
+}
+
+.form {
+  margin-top: 40px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
 }

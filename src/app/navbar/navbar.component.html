@@ -5,7 +5,15 @@
     </h3>
   </div>
   <div class="d-flex justify-content-between">
-    <a class="btn btn-signin me-2" routerLink="/login">Se connecter</a>
-    <a class="btn btn-primary" routerLink="/register">S'inscrire</a>
+    <a class="btn btn-signin me-2" routerLink="/login" *ngIf="!isAuth"
+      >Se connecter</a
+    >
+    <a class="btn btn-primary" routerLink="/register" *ngIf="!isAuth"
+      >S'inscrire</a
+    >
+    <span class="text-muted me-3 mt-2" *ngIf="isAuth">{{ user.email }}</span>
+    <a class="btn btn-danger" (click)="logout()" *ngIf="isAuth"
+      >Se déconnecter</a
+    >
   </div>
 </div>
