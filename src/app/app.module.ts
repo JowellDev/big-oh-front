@@ -22,7 +22,10 @@ import { ArticleCommentsCardComponent } from './articles/article-details/article
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
-import { AdminModule } from './admin/admin.module';
+import { AdminComponent } from './admin/admin.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -42,11 +45,14 @@ import { AdminModule } from './admin/admin.module';
     ArticleCommentsCardComponent,
     RegisterComponent,
     LoginComponent,
+    AdminComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdminModule,
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,

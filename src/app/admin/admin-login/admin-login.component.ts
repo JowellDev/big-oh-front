@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AdminAuthService } from '../../auth/admin-auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -11,7 +11,7 @@ import { AuthService } from '../auth/auth.service';
 export class AdminLoginComponent implements OnInit {
   error: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AdminAuthService, private router: Router) {}
 
   ngOnInit(): void {}
 

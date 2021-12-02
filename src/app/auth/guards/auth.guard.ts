@@ -8,10 +8,10 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth.service';
 
 @Injectable({ providedIn: 'root' })
-export class AdminGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -25,11 +25,11 @@ export class AdminGuard implements CanActivate {
     return this.authService.user.pipe(
       take(1),
       map((user) => {
-        const isAuth = !!user && user.isAdmin;
+        const isAuth = !!user;
         if (isAuth) {
           return true;
         }
-        return this.router.createUrlTree(['/admin/login']);
+        return this.router.createUrlTree(['/login']);
       })
     );
   }

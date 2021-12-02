@@ -5,7 +5,11 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { AdminComponent } from './admin/admin.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminGuard } from './auth/guards/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
@@ -25,8 +29,16 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'admin',
-    loadChildren: () =>
-      import('./admin/admin.module').then((m) => m.AdminModule),
+    component: AdminComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      {
+        path: 'dashboard',
+        component: AdminDashboardComponent,
+        //canActivate: [AdminGuard],
+      },
+      { path: 'login', component: AdminLoginComponent },
+    ],
   },
   { path: '**', redirectTo: 'articles' },
 ];

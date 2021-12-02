@@ -3,23 +3,23 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Admin } from '../models/admin.model';
+import { Admin } from '../shared/admin.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AdminAuthService {
   signin_url: string = 'http://localhost:3000/admin/login';
 
-  user = new BehaviorSubject<Admin>(null);
+  admin = new BehaviorSubject<Admin>(null);
   tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  signIn(user: { email: string; password: string }) {
+  signIn(admin: { email: string; password: string }) {
     const data: SignupData = {
-      email: user.email,
-      password: user.password,
+      email: admin.email,
+      password: admin.password,
     };
 
     return this.http.post<AuthResponseData>(this.signin_url, data).pipe(
@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   autoLogin() {
-    const userData: {
+    const adminData: {
       email: string;
       id: number;
       isAdmin: boolean;
@@ -40,12 +40,12 @@ export class AuthService {
       _token: string;
       expirationDate: string;
     } = JSON.parse(localStorage.getItem('adminData'));
-    if (!userData) {
+    if (!adminData) {
       return;
     }
 
     const { email, id, isAdmin, isSuperAdmin, _token, expirationDate } =
-      userData;
+      adminData;
 
     const loadedUser = new Admin(
       id,
@@ -59,13 +59,13 @@ export class AuthService {
     if (loadedUser.token) {
       const expireIn =
         new Date(expirationDate).getTime() - new Date().getTime();
-      this.user.next(loadedUser);
+      this.admin.next(loadedUser);
       this.autoLogout(expireIn);
     }
   }
 
   logout() {
-    this.user.next(null);
+    this.admin.next(null);
     localStorage.removeItem('adminData');
     this.router.navigate(['/admin/login']);
     if (this.tokenExpirationTimer) {
@@ -80,19 +80,19 @@ export class AuthService {
     }, expirationDuration);
   }
 
-  private handleAuthentication(_user: Admin, token: string) {
+  private handleAuthentication(_admin: Admin, token: string) {
     const expirationDate = new Date(new Date().getTime() + 3600 * 1000 * 24);
-    const user: Admin = new Admin(
-      _user.id,
-      _user.email,
-      _user.isAdmin,
-      _user.isSuperAdmin,
+    const admin: Admin = new Admin(
+      _admin.id,
+      _admin.email,
+      _admin.isAdmin,
+      _admin.isSuperAdmin,
       token,
       expirationDate
     );
 
-    this.user.next(user);
-    localStorage.setItem('adminData', JSON.stringify(user));
+    this.admin.next(admin);
+    localStorage.setItem('adminData', JSON.stringify(admin));
     this.autoLogout(3600 * 1000 * 24);
   }
 

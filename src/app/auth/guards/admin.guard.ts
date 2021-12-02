@@ -8,11 +8,11 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { AuthService } from './auth.service';
+import { AdminAuthService } from '../admin-auth.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+export class AdminGuard implements CanActivate {
+  constructor(private authService: AdminAuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,14 +22,14 @@ export class AuthGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    return this.authService.user.pipe(
+    return this.authService.admin.pipe(
       take(1),
       map((user) => {
-        const isAuth = !!user;
+        const isAuth = !!user && user.isAdmin;
         if (isAuth) {
           return true;
         }
-        return this.router.createUrlTree(['/login']);
+        return this.router.createUrlTree(['/admin/login']);
       })
     );
   }
