@@ -1,0 +1,15 @@
+.wrapper {
+  max-height: 90vh;
+  overflow-y: scroll;
+}
+
+.search-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

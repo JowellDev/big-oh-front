@@ -1,0 +1,25 @@
+.card {
+  cursor: pointer;
+  &:hover {
+    background-color: #031b4e;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+
+    .card-title {
+      color: #fff;
+    }
+
+    img {
+      color: #fff;
+    }
+  }
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+}
+
+.card-title {
+  color: #031b4e;
+}

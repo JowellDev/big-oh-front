@@ -13,6 +13,7 @@ import { AdminGuard } from './auth/guards/admin.guard';
 import { AdminArticlesListComponent } from './admin/admin-articles-list/admin-articles-list.component';
 import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
 import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins-list.component';
+import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
@@ -39,6 +40,11 @@ const routes: Routes = [
         path: 'dashboard',
         component: AdminDashboardComponent,
         children: [
+          {
+            path: '',
+            component: AdminWelcomeComponent,
+            pathMatch: 'full',
+          },
           {
             path: 'articles-list',
             component: AdminArticlesListComponent,

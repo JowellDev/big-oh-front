@@ -30,6 +30,8 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
 import { AdminArticlesListComponent } from './admin/admin-articles-list/admin-articles-list.component';
 import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
 import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins-list.component';
+import { AdminArticlesListItemComponent } from './admin/admin-articles-list/admin-articles-list-item/admin-articles-list-item.component';
+import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins
     AdminArticlesListComponent,
     AdminUsersListComponent,
     AdminAdminsListComponent,
+    AdminArticlesListItemComponent,
+    AdminWelcomeComponent,
   ],
   imports: [
     BrowserModule,
