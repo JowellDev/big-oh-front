@@ -14,6 +14,7 @@ import { AdminArticlesListComponent } from './admin/admin-articles-list/admin-ar
 import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
 import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins-list.component';
 import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.component';
+import { CreateArticleComponent } from './admin/create-article/create-article.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
@@ -39,6 +40,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: AdminDashboardComponent,
+        canActivate: [AdminGuard],
         children: [
           {
             path: '',
@@ -48,6 +50,11 @@ const routes: Routes = [
           {
             path: 'articles-list',
             component: AdminArticlesListComponent,
+            pathMatch: 'full',
+          },
+          {
+            path: 'start-writing',
+            component: CreateArticleComponent,
             pathMatch: 'full',
           },
           {
@@ -61,7 +68,6 @@ const routes: Routes = [
             pathMatch: 'full',
           },
         ],
-        //canActivate: [AdminGuard],
       },
       { path: 'login', component: AdminLoginComponent },
     ],

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Subject, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Article } from '../shared/article.model';
 
 @Injectable({
@@ -65,5 +65,18 @@ export class ArticlesService {
           this.articleChanged.next(article);
         })
       );
+  }
+
+  createArticle(body: {
+    title: string;
+    description: string;
+    category: string;
+    body: string;
+  }) {
+    return this.http.post(this.baseUrl, body).pipe(
+      catchError((errorRes) => {
+        return throwError(errorRes.error.message);
+      })
+    );
   }
 }

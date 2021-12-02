@@ -1,0 +1,91 @@
+<div class="mt-4 p-4">
+  <div class="col-md-12">
+    <h3 class="text-center title mb-4">Edition d'article</h3>
+  </div>
+  <hr />
+  <div class="col-md-12 mx-auto" *ngIf="error">
+    <div
+      class="alert alert-danger text-center alert-dismissible fade show"
+      role="alert"
+    >
+      {{ error }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        (click)="closeAlert()"
+      ></button>
+    </div>
+  </div>
+  <div class="col-md-12 mx-auto" *ngIf="success">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ success }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        (click)="closeAlert()"
+      ></button>
+    </div>
+  </div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="col-md-12 form-group">
+      <label class="form-label" for="title">Titre de l'article</label>
+      <textarea
+        class="form-control mb-4"
+        name="articleTitle"
+        id="title"
+        ngModel
+        required
+        id=""
+        cols="30"
+        rows="2"
+      ></textarea>
+    </div>
+    <div class="col-md-12 form-group">
+      <label class="form-label" for="description"
+        >Description de l'article</label
+      >
+      <textarea
+        class="form-control mb-4"
+        id="description"
+        name="articleDescription"
+        ngModel
+        required
+        cols="30"
+        rows="2"
+      ></textarea>
+    </div>
+    <div class="col-md-12 form-group">
+      <label class="form-label" for="categorie">Catégorie de l'article</label>
+      <select
+        id="categorie"
+        class="form-select mb-4"
+        ngModel
+        name="articleCategory"
+        required
+      >
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-12">
+      <label class="form-label" for="articleBody">Contenu de larticle</label>
+      <ckeditor
+        [disabled]="isDisabled"
+        [editor]="Editor"
+        name="articleBody"
+        ngModel
+        required
+      ></ckeditor>
+    </div>
+    <div class="col-md-12 form-label mt-4">
+      <button class="btn btn-primary" [disabled]="!f.valid">
+        Enregistrer l'article
+      </button>
+    </div>
+  </form>
+</div>

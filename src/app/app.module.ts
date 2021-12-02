@@ -33,6 +33,9 @@ import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins
 import { AdminArticlesListItemComponent } from './admin/admin-articles-list/admin-articles-list-item/admin-articles-list-item.component';
 import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.component';
 import { AdminInterceptorService } from './auth/admin-interceptor.service';
+import { CreateArticleComponent } from './admin/create-article/create-article.component';
+
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,7 @@ import { AdminInterceptorService } from './auth/admin-interceptor.service';
     AdminAdminsListComponent,
     AdminArticlesListItemComponent,
     AdminWelcomeComponent,
+    CreateArticleComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +73,7 @@ import { AdminInterceptorService } from './auth/admin-interceptor.service';
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    CKEditorModule,
   ],
   providers: [
     {
