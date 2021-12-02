@@ -30,7 +30,7 @@
         routerLinkActive="active"
       >
         <img src="/assets/img/article.svg" class="link-svg" />
-        <span>Articles</span>
+        <span>Articles publiés</span>
       </li>
       <li
         class="link"
@@ -48,6 +48,22 @@
         <img src="/assets/img/admin.svg" class="link-svg" />
         <span class="mt-2">Admins</span>
       </li>
+      <li
+        class="link"
+        routerLink="/admin/dashboard/unpublished-articles"
+        routerLinkActive="active"
+      >
+        <img src="/assets/img/article.svg" class="link-svg" />
+        <span>Articles pas publiés</span>
+      </li>
+      <a
+        class="link text-decoration-none"
+        routerLink="/articles"
+        target="_blank"
+      >
+        <img src="/assets/img/home.svg" class="link-svg" />
+        <span>Acceder au blog</span>
+      </a>
     </ul>
   </div>
 </div>

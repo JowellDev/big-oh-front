@@ -53,6 +53,11 @@ const routes: Routes = [
             pathMatch: 'full',
           },
           {
+            path: 'unpublished-articles',
+            component: AdminArticlesListComponent,
+            pathMatch: 'full',
+          },
+          {
             path: 'start-writing',
             component: CreateArticleComponent,
             pathMatch: 'full',

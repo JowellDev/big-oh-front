@@ -36,6 +36,7 @@ import { AdminInterceptorService } from './auth/admin-interceptor.service';
 import { CreateArticleComponent } from './admin/create-article/create-article.component';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { UnpublishedArticlesComponent } from './admin/unpublished-articles/unpublished-articles.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AdminArticlesListItemComponent,
     AdminWelcomeComponent,
     CreateArticleComponent,
+    UnpublishedArticlesComponent,
   ],
   imports: [
     BrowserModule,
