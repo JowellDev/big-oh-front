@@ -1,37 +1,21 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { User } from '../shared/user.model';
+import { environment } from 'src/environments/environment';
+import { User } from '../../shared/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  signup_url: string = 'http://localhost:3000/auth/register';
   signin_url: string = 'http://localhost:3000/auth/login';
 
   user = new BehaviorSubject<User>(null);
   tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
-
-  signUp(user: { email: string; password: string }) {
-    const data: SignupData = {
-      email: user.email,
-      password: user.password,
-    };
-
-    return this.http.post<AuthResponseData>(this.signup_url, data).pipe(
-      this.customCatchError(),
-      tap((resData: AuthResponseData) => {
-        console.log(resData);
-        const { user, token } = resData;
-        this.handleAuthentication(user, token);
-      })
-    );
-  }
 
   signIn(user: { email: string; password: string }) {
     const data: SignupData = {

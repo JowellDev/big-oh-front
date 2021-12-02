@@ -22,6 +22,7 @@ import { ArticleCommentsCardComponent } from './articles/article-details/article
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminModule,
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
