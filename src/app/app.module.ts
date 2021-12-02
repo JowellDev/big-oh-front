@@ -26,6 +26,10 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
+import { AdminArticlesListComponent } from './admin/admin-articles-list/admin-articles-list.component';
+import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
+import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins-list.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AdminLoginComponent,
     AdminDashboardComponent,
     SidebarComponent,
+    AdminNavbarComponent,
+    AdminArticlesListComponent,
+    AdminUsersListComponent,
+    AdminAdminsListComponent,
   ],
   imports: [
     BrowserModule,

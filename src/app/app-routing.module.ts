@@ -10,6 +10,9 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminGuard } from './auth/guards/admin.guard';
+import { AdminArticlesListComponent } from './admin/admin-articles-list/admin-articles-list.component';
+import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
+import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
@@ -35,6 +38,23 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: AdminDashboardComponent,
+        children: [
+          {
+            path: 'articles-list',
+            component: AdminArticlesListComponent,
+            pathMatch: 'full',
+          },
+          {
+            path: 'users-list',
+            component: AdminUsersListComponent,
+            pathMatch: 'full',
+          },
+          {
+            path: 'admins-list',
+            component: AdminAdminsListComponent,
+            pathMatch: 'full',
+          },
+        ],
         //canActivate: [AdminGuard],
       },
       { path: 'login', component: AdminLoginComponent },

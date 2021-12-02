@@ -1,1 +1,45 @@
-<p>sidebar works!</p>
+<div class="wrapper">
+  <div class="sidebar-title py-2">
+    <img src="/assets/img/logo.svg" class="logo" alt="" srcset="" />
+    <h5 class="fw-bolder text-white ms-2 mt-2">
+      The big<span class="letter-o">O</span>h blog
+    </h5>
+  </div>
+  <div class="sidebar-links">
+    <ul class="sidebar-nav">
+      <li
+        class="link"
+        routerLink="/admin/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <img src="/assets/img/home.svg" class="link-svg" />
+        <span>Dashboard</span>
+      </li>
+      <li
+        class="link"
+        routerLink="/admin/dashboard/articles-list"
+        routerLinkActive="active"
+      >
+        <img src="/assets/img/article.svg" class="link-svg" />
+        <span>Articles</span>
+      </li>
+      <li
+        class="link"
+        routerLink="/admin/dashboard/users-list"
+        routerLinkActive="active"
+      >
+        <img src="/assets/img/users.svg" class="link-svg" />
+        <span>Users</span>
+      </li>
+      <li
+        class="link"
+        routerLink="/admin/dashboard/admins-list"
+        routerLinkActive="active"
+      >
+        <img src="/assets/img/admin.svg" class="link-svg" />
+        <span class="mt-2">Admins</span>
+      </li>
+    </ul>
+  </div>
+</div>
