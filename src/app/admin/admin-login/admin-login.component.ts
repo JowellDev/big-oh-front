@@ -18,7 +18,7 @@ export class AdminLoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.authService.signIn(form.value).subscribe(
       (response) => {
-        this.router.navigate(['/articles']);
+        this.router.navigate(['/admin/dashboard']);
       },
       (error) => {
         this.error = error;
