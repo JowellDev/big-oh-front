@@ -32,6 +32,7 @@ import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-li
 import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins-list.component';
 import { AdminArticlesListItemComponent } from './admin/admin-articles-list/admin-articles-list-item/admin-articles-list-item.component';
 import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.component';
+import { AdminInterceptorService } from './auth/admin-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,11 @@ import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.compo
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AdminInterceptorService,
       multi: true,
     },
   ],
