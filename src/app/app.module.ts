@@ -37,6 +37,7 @@ import { CreateArticleComponent } from './admin/create-article/create-article.co
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { UnpublishedArticlesComponent } from './admin/unpublished-articles/unpublished-articles.component';
+import { AdminArticleDetailsComponent } from './admin/admin-article-details/admin-article-details.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { UnpublishedArticlesComponent } from './admin/unpublished-articles/unpub
     AdminWelcomeComponent,
     CreateArticleComponent,
     UnpublishedArticlesComponent,
+    AdminArticleDetailsComponent,
   ],
   imports: [
     BrowserModule,

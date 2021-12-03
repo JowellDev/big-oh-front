@@ -1,0 +1,44 @@
+<div class="mt-2 p-4">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a class="text-decoration-none" routerLink="/admin/dashboard"
+            >Accueil</a
+          >
+        </li>
+        <li class="breadcrumb-item">
+          <a
+            class="text-decoration-none"
+            routerLink="/admin/dashboard/articles-list"
+            >les articles</a
+          >
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          {{ article.title }}
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="content p-4">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center fw-bolder">Titre : {{ article.title }}</h3>
+      </div>
+      <div class="col-md-8 mt-4 me-2">
+        <h5 class="bg-secondary text-white p-2 rounded-3 text-center">
+          <span class="fw-bolder">Description</span> : {{ article.description }}
+        </h5>
+      </div>
+      <div class="col-md-3 mt-4">
+        <h5 class="p-2 rounded-3 text-center">
+          <span class="fw-bolder">Categorie</span> : {{ article.category }}
+        </h5>
+      </div>
+      <div class="col-md-12 p-4">
+        <h3 class="my-5 fw-bolder">Contenu :</h3>
+        <div class="p-4 bg-gradient" [innerHTML]="article.body"></div>
+      </div>
+    </div>
+  </div>
+</div>

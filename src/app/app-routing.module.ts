@@ -16,6 +16,7 @@ import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins
 import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.component';
 import { CreateArticleComponent } from './admin/create-article/create-article.component';
 import { UnpublishedArticlesComponent } from './admin/unpublished-articles/unpublished-articles.component';
+import { AdminArticleDetailsComponent } from './admin/admin-article-details/admin-article-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
@@ -46,33 +47,32 @@ const routes: Routes = [
           {
             path: '',
             component: AdminWelcomeComponent,
-            pathMatch: 'full',
           },
           {
             path: 'articles-list',
             component: AdminArticlesListComponent,
-            pathMatch: 'full',
           },
           {
             path: 'unpublished-articles',
             component: UnpublishedArticlesComponent,
-            pathMatch: 'full',
+          },
+          {
+            path: 'article-details/:id',
+            component: AdminArticleDetailsComponent,
           },
           {
             path: 'start-writing',
             component: CreateArticleComponent,
-            pathMatch: 'full',
           },
           {
             path: 'users-list',
             component: AdminUsersListComponent,
-            pathMatch: 'full',
           },
           {
             path: 'admins-list',
             component: AdminAdminsListComponent,
-            pathMatch: 'full',
           },
+          { path: '**', redirectTo: '', pathMatch: 'full' },
         ],
       },
       { path: 'login', component: AdminLoginComponent },
