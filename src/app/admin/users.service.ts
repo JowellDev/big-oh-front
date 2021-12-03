@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { catchError, map, Subject, throwError } from 'rxjs';
 import { Admin } from '../shared/admin.model';
 import { User } from '../shared/user.model';
 
@@ -12,6 +12,8 @@ export class UsersService {
   users: User[];
   userChanged = new Subject<User>();
   usersChanged = new Subject<User[]>();
+  adminsChanged = new Subject<Admin>();
+
   baseURL: string = 'http://localhost:3000/admin';
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -21,5 +23,16 @@ export class UsersService {
 
   getAllAdmins() {
     return this.http.get<Admin[]>(`${this.baseURL}/list`);
+  }
+
+  addAdmin(data: { email: string; password: string }) {
+    return this.http.post(`${this.baseURL}/create-admin`, data).pipe(
+      catchError((response) => {
+        return throwError(response.error.message);
+      }),
+      map((admin) => {
+        return admin;
+      })
+    );
   }
 }

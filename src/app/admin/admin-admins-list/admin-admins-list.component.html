@@ -1,1 +1,94 @@
-<p>admin-admins-list works!</p>
+<div class="mt-1 p-4">
+  <div class="row">
+    <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a class="text-decoration-none" routerLink="/admin/dashboard"
+              >Accueil</a
+            >
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Liste des administrateurs
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div
+          *ngFor="let admin of admins"
+          class="col-md-12 bg-info p-4 mb-4 rounded-2"
+        >
+          <div class="row">
+            <div class="col-md-7 fs-4 fw-bolder">
+              {{ admin.email }}
+            </div>
+            <div class="col-md-5 text-center">
+              <span
+                class="badge rounded-pill p-2"
+                [ngClass]="{
+                  'bg-success': admin.isSuperAdmin,
+                  'bg-primary': !admin.isSuperAdmin
+                }"
+                >{{
+                  admin.isSuperAdmin ? "Super Administrateur" : "Administrateur"
+                }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4 class="text-center">Ajouter un nouvel administrateur</h4>
+      <hr />
+      <form (ngSubmit)="addAdmin(f)" #f="ngForm">
+        <div
+          class="alert alert-danger text-center alert-dismissible fade show"
+          role="alert"
+          *ngIf="error"
+        >
+          {{ error }}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+            (click)="closeAlert()"
+          ></button>
+        </div>
+        <div class="form-group">
+          <label for="email" class="mb-2">Email de l'admin</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group mt-4">
+          <label for="password" class="mb-2">Mot de passe par defaut</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            ngModel
+            required
+          />
+          <small>
+            <span class="text-muted mt-4"
+              >(Au moins six(8) caracteres)</span
+            ></small
+          >
+        </div>
+        <div class="mt-4">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
