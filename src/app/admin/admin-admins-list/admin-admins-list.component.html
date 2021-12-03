@@ -57,7 +57,7 @@
                 }}</span
               >
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2" *ngIf="!admin.isSuperAdmin">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="remove-icon"
