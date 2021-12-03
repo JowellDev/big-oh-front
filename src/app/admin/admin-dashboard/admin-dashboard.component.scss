@@ -5,9 +5,21 @@
 
 .wrapper {
   max-height: 90vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+  height: 5px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #031b4e;
+  border-radius: 5px;
 }

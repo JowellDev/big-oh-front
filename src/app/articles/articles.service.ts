@@ -20,6 +20,10 @@ export class ArticlesService {
     return this.http.get<Article[]>(this.baseUrl);
   }
 
+  getUnpublishedArticles() {
+    return this.http.get<Article[]>(`${this.baseUrl}/unpublished`);
+  }
+
   getArticle(id: string) {
     return this.http.get<Article>(`${this.baseUrl}/${id}`);
   }

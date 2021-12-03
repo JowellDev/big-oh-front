@@ -1,1 +1,52 @@
-<p>unpublished-articles works!</p>
+<div class="mt-1 p-2">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a class="text-decoration-none" routerLink="/admin/dashboard"
+            >Accueil</a
+          >
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Liste des articles pas publiés
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="col-md-12">
+    <div class="search-section">
+      <div class="col-md-7"></div>
+      <div class="col-md-3">
+        <a
+          routerLink="/admin/dashboard/start-writing"
+          routerLinkActive="active"
+          class="btn btn-primary"
+        >
+          Rédiger un nouvelle article
+          <img src="/assets/img/pen.svg" height="30" width="30" alt="" />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 p-4">
+    <div class="row">
+      <div
+        class="col-md-6"
+        *ngFor="
+          let article of articles
+            | paginate
+              : { itemsPerPage: pageItems, currentPage: paginationCurrentPage }
+        "
+      >
+        <app-admin-articles-list-item
+          [article]="article"
+        ></app-admin-articles-list-item>
+      </div>
+      <pagination-controls
+        (pageChange)="paginationCurrentPage = $event"
+        previousLabel="Précedents"
+        nextLabel="Suivants"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>

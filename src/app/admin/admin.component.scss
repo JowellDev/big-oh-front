@@ -1,5 +1,7 @@
 .content {
   background-color: rgba(219, 230, 230, 0.385);
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
