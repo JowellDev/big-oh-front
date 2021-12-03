@@ -11,6 +11,7 @@ export class ArticlesService {
   articles: Article[] = [];
   articlesChanged = new Subject<Article[]>();
   articleChanged = new Subject<Article>();
+  messageAlert = new Subject<string>();
 
   baseUrl: string = 'http://localhost:3000/articles';
 
@@ -80,6 +81,22 @@ export class ArticlesService {
     return this.http.post(this.baseUrl, body).pipe(
       catchError((errorRes) => {
         return throwError(errorRes.error.message);
+      })
+    );
+  }
+
+  publishOrUnpublish(articleId: string) {
+    return this.http.put(`${this.baseUrl}/${articleId}/publish`, {});
+  }
+
+  updatePublishDate(articleId: string) {
+    return this.http.put(`${this.baseUrl}/${articleId}/republish`, {});
+  }
+
+  deleteArticle(articleId: string) {
+    return this.http.delete(`${this.baseUrl}/${articleId}`).pipe(
+      map((response: { message: string }) => {
+        this.messageAlert.next(response.message);
       })
     );
   }

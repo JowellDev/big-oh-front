@@ -39,6 +39,41 @@
         <h3 class="my-5 fw-bolder">Contenu :</h3>
         <div class="p-4 bg-gradient" [innerHTML]="article.body"></div>
       </div>
+      <div class="col-md-6">
+        <button class="btn btn-primary me-2">Mettre à jour</button>
+        <button class="btn btn-warning me-2" (click)="republier()">
+          Republier
+        </button>
+        <button
+          [ngClass]="{
+            'btn-secondary': article.is_published,
+            'btn-success': !article.is_published
+          }"
+          class="btn me-2"
+          (click)="publishOrUnpublish()"
+        >
+          {{ article.is_published ? "Depublier" : "Publier" }}
+        </button>
+        <button class="btn btn-danger me-2" (click)="delete()">
+          Supprimer
+        </button>
+      </div>
+      <div class="col-md-6 mx-auto">
+        <div
+          class="alert alert-success text-center alert-dismissible fade show"
+          role="alert"
+          *ngIf="message"
+        >
+          {{ message }}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+            (click)="closeAlert()"
+          ></button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

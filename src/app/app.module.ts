@@ -5,6 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,7 +15,6 @@ import { ArticlesListComponent } from './articles/articles-list/articles-list.co
 import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 import { ArticlesListItemComponent } from './articles/articles-list/articles-list-item/articles-list-item.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { DropdownDirective } from './directives/dropdown.directive';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleContentComponent } from './articles/article-details/article-content/article-content.component';
 import { ArticleDescriptionComponent } from './articles/article-details/article-description/article-description.component';
@@ -22,6 +23,7 @@ import { ArticleCommentsCardComponent } from './articles/article-details/article
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+
 import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
@@ -34,8 +36,6 @@ import { AdminArticlesListItemComponent } from './admin/admin-articles-list/admi
 import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.component';
 import { AdminInterceptorService } from './auth/admin-interceptor.service';
 import { CreateArticleComponent } from './admin/create-article/create-article.component';
-
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { UnpublishedArticlesComponent } from './admin/unpublished-articles/unpublished-articles.component';
 import { AdminArticleDetailsComponent } from './admin/admin-article-details/admin-article-details.component';
 
@@ -49,7 +49,6 @@ import { AdminArticleDetailsComponent } from './admin/admin-article-details/admi
     ArticleDetailsComponent,
     ArticlesListItemComponent,
     SearchBarComponent,
-    DropdownDirective,
     FooterComponent,
     ArticleContentComponent,
     ArticleDescriptionComponent,
