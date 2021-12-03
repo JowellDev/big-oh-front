@@ -35,4 +35,15 @@ export class UsersService {
       })
     );
   }
+
+  removeAdmin(id: string) {
+    return this.http.delete(`${this.baseURL}/delete-admin/${id}`).pipe(
+      catchError((response) => {
+        return throwError(response.error.message);
+      }),
+      map((admin) => {
+        return admin;
+      })
+    );
+  }
 }

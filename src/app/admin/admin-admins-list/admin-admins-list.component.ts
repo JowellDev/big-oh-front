@@ -41,6 +41,17 @@ export class AdminAdminsListComponent implements OnInit {
     );
   }
 
+  removeAdmin(adminEmail) {
+    this.usersService.removeAdmin(adminEmail).subscribe(
+      (res) => {
+        this.admins = this.admins.filter((admin) => admin.email !== adminEmail);
+      },
+      (error) => {
+        this.error = error;
+      }
+    );
+  }
+
   closeAlert() {
     this.error = null;
   }

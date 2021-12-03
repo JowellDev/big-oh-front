@@ -14,6 +14,27 @@
         </ol>
       </nav>
     </div>
+    <div
+      class="
+        alert alert-danger
+        text-center
+        alert-dismissible
+        fade
+        show
+        col-md-7
+      "
+      role="alert"
+      *ngIf="error"
+    >
+      {{ error }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        (click)="closeAlert()"
+      ></button>
+    </div>
     <div class="col-md-6">
       <div class="row">
         <div
@@ -24,7 +45,7 @@
             <div class="col-md-7 fs-4 fw-bolder">
               {{ admin.email }}
             </div>
-            <div class="col-md-5 text-center">
+            <div class="col-md-3 text-center">
               <span
                 class="badge rounded-pill p-2"
                 [ngClass]="{
@@ -36,6 +57,19 @@
                 }}</span
               >
             </div>
+            <div class="col-md-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="remove-icon"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                (click)="removeAdmin(admin.email)"
+              >
+                <path
+                  d="M11 6a3 3 0 11-6 0 3 3 0 016 0zM14 17a6 6 0 00-12 0h12zM13 8a1 1 0 100 2h4a1 1 0 100-2h-4z"
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -43,21 +77,7 @@
     <div class="col-md-6">
       <h4 class="text-center">Ajouter un nouvel administrateur</h4>
       <hr />
-      <form (ngSubmit)="addAdmin(f)" #f="ngForm">
-        <div
-          class="alert alert-danger text-center alert-dismissible fade show"
-          role="alert"
-          *ngIf="error"
-        >
-          {{ error }}
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            (click)="closeAlert()"
-          ></button>
-        </div>
+      <form (ngSubmit)="addAdmin(f)" #f="ngForm" class="p-4">
         <div class="form-group">
           <label for="email" class="mb-2">Email de l'admin</label>
           <input
@@ -65,6 +85,7 @@
             class="form-control"
             name="email"
             id="email"
+            email
             ngModel
             required
           />
@@ -76,6 +97,7 @@
             class="form-control"
             name="password"
             id="password"
+            minlength="8"
             ngModel
             required
           />
@@ -86,7 +108,10 @@
           >
         </div>
         <div class="mt-4">
-          <button type="submit" class="btn btn-primary">Enregistrer</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+            <img src="/assets/img/add.svg" height="30" width="30" alt="" />
+            Ajouter
+          </button>
         </div>
       </form>
     </div>
