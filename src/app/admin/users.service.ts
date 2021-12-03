@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Subject, throwError } from 'rxjs';
@@ -43,6 +43,18 @@ export class UsersService {
       }),
       map((admin) => {
         return admin;
+      })
+    );
+  }
+
+  activeAccount(email: string) {
+    const opts = { params: new HttpParams().set('email', email) };
+    return this.http.put(`${this.baseURL}/change-user-status`, {}, opts).pipe(
+      catchError((response) => {
+        return throwError(response.error.message);
+      }),
+      map((user) => {
+        return user;
       })
     );
   }

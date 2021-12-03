@@ -1,1 +1,62 @@
-<p>admin-users-list works!</p>
+<div class="mt-4 p-4">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a class="text-decoration-none" routerLink="/admin/dashboard"
+            >Accueil</a
+          >
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Liste des utilisateurs
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="col-md-12">
+    <div class="row">
+      <div
+        class="col-md-6"
+        *ngFor="
+          let user of users
+            | paginate
+              : { itemsPerPage: pageItems, currentPage: paginationCurrentPage }
+        "
+      >
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fs-4 fw-bolder">
+              {{ user.email }}
+              <span
+                class="badge rounded-pill"
+                [ngClass]="{
+                  'bg-success': user.isActive,
+                  'bg-danger': !user.isActive
+                }"
+                >{{ user.isActive ? "actif" : "inactif" }}</span
+              >
+            </h5>
+            <p class="card-text text-muted">
+              Date d'inscription : {{ user.createdAt }}
+            </p>
+            <button
+              class="btn btn-sm"
+              [ngClass]="{
+                'btn-success': !user.isActive,
+                'btn-danger': user.isActive
+              }"
+              (click)="activeAccount(user.email)"
+            >
+              {{ user.isActive ? "Desactiver ce compte" : "Activer le compte" }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <pagination-controls
+        (pageChange)="paginationCurrentPage = $event"
+        previousLabel="Précedents"
+        nextLabel="Suivants"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>

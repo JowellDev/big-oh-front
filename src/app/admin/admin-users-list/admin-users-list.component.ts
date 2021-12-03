@@ -9,8 +9,10 @@ import { UsersService } from '../users.service';
   styleUrls: ['./admin-users-list.component.scss'],
 })
 export class AdminUsersListComponent implements OnInit {
-  users: User[] = [];
+  users = [];
   subscription: Subscription;
+  pageItems: number = 10;
+  paginationCurrentPage: number = 1;
 
   constructor(private usersService: UsersService) {}
 
@@ -20,5 +22,17 @@ export class AdminUsersListComponent implements OnInit {
       .subscribe((members: User[]) => {
         this.users = members;
       });
+  }
+
+  activeAccount(userEmail) {
+    this.usersService.activeAccount(userEmail).subscribe(
+      (res) => {
+        const user = this.users.find((user) => user.email === userEmail);
+        user.isActive = !user.isActive;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
