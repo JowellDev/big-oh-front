@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Article } from 'src/app/shared/article.model';
-import { User } from 'src/app/shared/user.model';
 import { ArticlesService } from '../../articles.service';
 
 @Component({

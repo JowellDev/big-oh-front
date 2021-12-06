@@ -9,7 +9,8 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./admin-login.component.scss'],
 })
 export class AdminLoginComponent implements OnInit {
-  error: string = '';
+  alertMessage: string;
+  alertType: string;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -21,12 +22,14 @@ export class AdminLoginComponent implements OnInit {
         this.router.navigate(['/admin/dashboard']);
       },
       (error) => {
-        this.error = error;
+        this.alertMessage = error;
+        this.alertType = 'danger';
       }
     );
   }
 
   closeAlert() {
-    this.error = null;
+    this.alertMessage = null;
+    this.alertType = null;
   }
 }

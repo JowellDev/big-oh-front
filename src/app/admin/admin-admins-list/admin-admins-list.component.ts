@@ -12,7 +12,8 @@ import { UsersService } from '../users.service';
 export class AdminAdminsListComponent implements OnInit {
   subscription: Subscription;
   admins: User[] = [];
-  error: string;
+  alertMessage: string;
+  alertType: string;
 
   constructor(private usersService: UsersService) {}
 
@@ -36,7 +37,8 @@ export class AdminAdminsListComponent implements OnInit {
         form.reset();
       },
       (error) => {
-        this.error = error;
+        this.alertMessage = error;
+        this.alertType = 'danger';
       }
     );
   }
@@ -47,12 +49,14 @@ export class AdminAdminsListComponent implements OnInit {
         this.admins = this.admins.filter((admin) => admin.email !== adminEmail);
       },
       (error) => {
-        this.error = error;
+        this.alertMessage = error;
+        this.alertType = 'danger';
       }
     );
   }
 
   closeAlert() {
-    this.error = null;
+    this.alertMessage = null;
+    this.alertType = null;
   }
 }

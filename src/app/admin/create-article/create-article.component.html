@@ -17,32 +17,13 @@
     <h3 class="text-center title mb-4">Edition d'article</h3>
   </div>
   <hr />
-  <div class="col-md-12 mx-auto" *ngIf="error">
-    <div
-      class="alert alert-danger text-center alert-dismissible fade show"
-      role="alert"
-    >
-      {{ error }}
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-        (click)="closeAlert()"
-      ></button>
-    </div>
-  </div>
-  <div class="col-md-12 mx-auto" *ngIf="success">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {{ success }}
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-        (click)="closeAlert()"
-      ></button>
-    </div>
+  <div class="col-md-12 mx-auto">
+    <app-alert
+      *ngIf="alertMessage"
+      [message]="alertMessage"
+      [alertType]="alertType"
+      (close)="closeAlert()"
+    ></app-alert>
   </div>
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="col-md-12 form-group">
@@ -53,7 +34,6 @@
         id="title"
         ngModel
         required
-        id=""
         cols="30"
         rows="2"
       ></textarea>

@@ -9,7 +9,8 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  error: string;
+  alertMessage: string;
+  alertType: string;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -21,12 +22,14 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/articles']);
       },
       (error) => {
-        this.error = error;
+        this.alertMessage = error;
+        this.alertType = 'danger';
       }
     );
   }
 
   closeAlert() {
-    this.error = null;
+    this.alertMessage = null;
+    this.alertType = null;
   }
 }

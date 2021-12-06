@@ -15,8 +15,8 @@ export class CreateArticleComponent implements OnInit {
   isDisabled: boolean = false;
   watchdog: any;
   ready: boolean = false;
-  error: string;
-  success: string;
+  alertMessage: string;
+  alertType: string;
 
   categories = [
     { id: 'algo', name: 'Algorithmie' },
@@ -45,19 +45,21 @@ export class CreateArticleComponent implements OnInit {
 
     this.articleService.createArticle(data).subscribe(
       (response) => {
-        this.success =
+        this.alertMessage =
           "L'article a été créé avec succès. Vous devez maitenant le publier. Accéder à l'onglet des articles pas encore publiés pour le faire !";
+        this.alertType = 'success';
         form.reset();
       },
       (error) => {
-        this.error =
+        this.alertMessage =
           "Une erreur s'est produite au moment de la création de l'article. Veuillez réessayer !";
+        this.alertType = 'danger';
       }
     );
   }
 
   closeAlert() {
-    this.success = null;
-    this.error = null;
+    this.alertMessage = null;
+    this.alertType = null;
   }
 }

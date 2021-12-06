@@ -11,7 +11,8 @@ import { Article } from 'src/app/shared/article.model';
 export class AdminArticleDetailsComponent implements OnInit {
   article: Article;
   articleId: string;
-  message: string = null;
+  alertMessage: string;
+  alertType: string;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -32,14 +33,16 @@ export class AdminArticleDetailsComponent implements OnInit {
       .publishOrUnpublish(this.articleId)
       .subscribe((article: Article) => {
         this.article.published_at = article.published_at;
-        this.message = 'Action éffectuée avec succès !';
+        this.alertMessage = 'Action éffectuée avec succès !';
+        this.alertType = 'success';
       });
   }
 
   publishOrUnpublish() {
     this.article.is_published = !this.article.is_published;
     this.articleService.publishOrUnpublish(this.articleId).subscribe(() => {
-      this.message = 'Action éffectuée avec succès !';
+      this.alertMessage = 'Action éffectuée avec succès !';
+      this.alertType = 'success';
     });
   }
 
@@ -49,6 +52,7 @@ export class AdminArticleDetailsComponent implements OnInit {
   }
 
   closeAlert() {
-    this.message = null;
+    this.alertMessage = null;
+    this.alertType = null;
   }
 }

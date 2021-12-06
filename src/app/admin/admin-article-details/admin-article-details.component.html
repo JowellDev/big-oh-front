@@ -59,20 +59,12 @@
         </button>
       </div>
       <div class="col-md-6 mx-auto">
-        <div
-          class="alert alert-success text-center alert-dismissible fade show"
-          role="alert"
-          *ngIf="message"
-        >
-          {{ message }}
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            (click)="closeAlert()"
-          ></button>
-        </div>
+        <app-alert
+          *ngIf="alertMessage"
+          [message]="alertMessage"
+          [alertType]="alertType"
+          (close)="closeAlert()"
+        ></app-alert>
       </div>
     </div>
   </div>

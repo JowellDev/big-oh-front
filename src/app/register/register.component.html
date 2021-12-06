@@ -36,26 +36,12 @@
               <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form">
                 <div class="row">
                   <div class="col-md-7 mx-auto">
-                    <div
-                      class="
-                        alert alert-danger
-                        text-center
-                        alert-dismissible
-                        fade
-                        show
-                      "
-                      role="alert"
-                      *ngIf="error"
-                    >
-                      {{ error }}
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Close"
-                        (click)="closeAlert()"
-                      ></button>
-                    </div>
+                    <app-alert
+                      *ngIf="alertMessage"
+                      [message]="alertMessage"
+                      [alertType]="alertType"
+                      (close)="closeAlert()"
+                    ></app-alert>
                   </div>
                   <div class="col-md-7 mx-auto">
                     <label for="email" class="text-dark mb-2">Email</label>

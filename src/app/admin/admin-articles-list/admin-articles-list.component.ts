@@ -14,6 +14,7 @@ export class AdminArticlesListComponent implements OnInit, OnDestroy {
   paginationCurrentPage: number = 1;
   pageItems: number = 4;
   alertMessage: string;
+  alertType: string;
   constructor(private articleService: ArticlesService) {}
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class AdminArticlesListComponent implements OnInit, OnDestroy {
 
     this.articleService.messageAlert.subscribe((message) => {
       this.alertMessage = message;
+      this.alertType = 'success';
     });
   }
 
