@@ -4,6 +4,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
+import { ShareModule } from '../shared/share.module';
 
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { AdminAdminsListComponent } from './admin-admins-list/admin-admins-list.component';
@@ -18,7 +19,6 @@ import { AdminWelcomeComponent } from './admin-welcome/admin-welcome.component';
 import { AdminComponent } from './admin.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { UnpublishedArticlesComponent } from './unpublished-articles/unpublished-articles.component';
-import { ShareModule } from '../share.module';
 
 @NgModule({
   declarations: [
