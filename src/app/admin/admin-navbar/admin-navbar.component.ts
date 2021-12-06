@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AdminAuthService } from 'src/app/auth/admin-auth.service';
-import { Admin } from 'src/app/shared/admin.model';
+import { User } from 'src/app/shared/user.model';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -10,20 +11,21 @@ import { Admin } from 'src/app/shared/admin.model';
 })
 export class AdminNavbarComponent implements OnInit, OnDestroy {
   isAuth: boolean;
-  admin: Admin;
+  admin: User;
   subscription: Subscription;
 
-  constructor(private adminAuth: AdminAuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.subscription = this.adminAuth.admin.subscribe((admin) => {
+    this.subscription = this.authService.user.subscribe((admin) => {
       this.isAuth = !!admin;
       this.admin = admin;
     });
   }
 
   logout() {
-    this.adminAuth.logout();
+    this.authService.logout();
+    this.router.navigate(['/admin/login']);
   }
 
   ngOnDestroy() {

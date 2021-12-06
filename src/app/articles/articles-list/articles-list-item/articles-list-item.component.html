@@ -23,10 +23,7 @@
         </svg>
         <span class="ms-4">{{ article.likes }}</span>
       </div>
-      <a
-        [routerLink]="['/articles', article.id]"
-        class="btn btn-primary btn-sm"
-        *ngIf="isAuth"
+      <a [routerLink]="['/articles', article.id]" class="btn btn-primary btn-sm"
         >Read more</a
       >
     </div>

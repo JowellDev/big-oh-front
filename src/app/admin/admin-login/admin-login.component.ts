@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminAuthService } from '../../auth/admin-auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -11,12 +11,12 @@ import { AdminAuthService } from '../../auth/admin-auth.service';
 export class AdminLoginComponent implements OnInit {
   error: string = '';
 
-  constructor(private authService: AdminAuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
-    this.authService.signIn(form.value).subscribe(
+    this.authService.adminSignIn(form.value).subscribe(
       (response) => {
         this.router.navigate(['/admin/dashboard']);
       },

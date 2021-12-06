@@ -11,6 +11,7 @@ import { User } from '../shared/user.model';
 export class AuthService {
   signup_url: string = 'http://localhost:3000/auth/register';
   signin_url: string = 'http://localhost:3000/auth/login';
+  admin_signin_url: string = 'http://localhost:3000/admin/login';
 
   user = new BehaviorSubject<User>(null);
   tokenExpirationTimer: any;
@@ -48,10 +49,27 @@ export class AuthService {
     );
   }
 
+  adminSignIn(user: { email: string; password: string }) {
+    const data: SignupData = {
+      email: user.email,
+      password: user.password,
+    };
+
+    return this.http.post<AuthResponseData>(this.admin_signin_url, data).pipe(
+      this.customCatchError(),
+      tap((resData: AuthResponseData) => {
+        const { user, token } = resData;
+        this.handleAuthentication(user, token);
+      })
+    );
+  }
+
   autoLogin() {
     const userData: {
       email: string;
       id: number;
+      isAdmin: boolean;
+      isSuperAdmin: boolean;
       _token: string;
       expirationDate: string;
     } = JSON.parse(localStorage.getItem('userData'));
@@ -59,9 +77,17 @@ export class AuthService {
       return;
     }
 
-    const { email, id, _token, expirationDate } = userData;
+    const { email, id, isAdmin, isSuperAdmin, _token, expirationDate } =
+      userData;
 
-    const loadedUser = new User(id, email, _token, new Date(expirationDate));
+    const loadedUser = new User(
+      id,
+      email,
+      isAdmin,
+      isSuperAdmin,
+      _token,
+      new Date(expirationDate)
+    );
 
     if (loadedUser.token) {
       const expireIn =
@@ -74,7 +100,6 @@ export class AuthService {
   logout() {
     this.user.next(null);
     localStorage.removeItem('userData');
-    this.router.navigate(['/login']);
     if (this.tokenExpirationTimer) {
       clearInterval(this.tokenExpirationTimer);
     }
@@ -89,7 +114,14 @@ export class AuthService {
 
   private handleAuthentication(_user: User, token: string) {
     const expirationDate = new Date(new Date().getTime() + 3600 * 1000 * 24);
-    const user: User = new User(_user.id, _user.email, token, expirationDate);
+    const user: User = new User(
+      _user.id,
+      _user.email,
+      _user.isAdmin,
+      _user.isSuperAdmin,
+      token,
+      expirationDate
+    );
 
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));

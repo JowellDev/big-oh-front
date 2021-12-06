@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../shared/user.model';
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
   user: User;
   subscription: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.subscription = this.authService.user.subscribe((user: User) => {
@@ -24,5 +25,6 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Admin } from 'src/app/shared/admin.model';
+import { User } from 'src/app/shared/user.model';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UsersService } from '../users.service';
 })
 export class AdminAdminsListComponent implements OnInit {
   subscription: Subscription;
-  admins: Admin[] = [];
+  admins: User[] = [];
   error: string;
 
   constructor(private usersService: UsersService) {}
@@ -19,7 +19,7 @@ export class AdminAdminsListComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.usersService
       .getAllAdmins()
-      .subscribe((members: Admin[]) => {
+      .subscribe((members: User[]) => {
         this.admins = members;
       });
   }
@@ -31,7 +31,7 @@ export class AdminAdminsListComponent implements OnInit {
     };
 
     this.usersService.addAdmin(data).subscribe(
-      (admin: Admin) => {
+      (admin: User) => {
         this.admins.push(admin);
         form.reset();
       },

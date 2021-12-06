@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from 'src/app/articles/articles.service';
-import { Admin } from 'src/app/shared/admin.model';
 import { Article } from 'src/app/shared/article.model';
 import { User } from 'src/app/shared/user.model';
 import { UsersService } from '../users.service';
@@ -17,7 +16,7 @@ export class AdminWelcomeComponent implements OnInit, OnDestroy {
   adminsSub: Subscription;
   articles: Article[];
   users: User[];
-  admins: Admin[];
+  admins: User[];
 
   constructor(
     private articlesService: ArticlesService,
@@ -39,7 +38,7 @@ export class AdminWelcomeComponent implements OnInit, OnDestroy {
 
     this.adminsSub = this.usersService
       .getAllAdmins()
-      .subscribe((admins: Admin[]) => {
+      .subscribe((admins: User[]) => {
         this.admins = admins;
       });
   }
