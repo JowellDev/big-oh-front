@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Article } from '../shared/article.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class ArticlesService {
   articleChanged = new Subject<Article>();
   messageAlert = new Subject<string>();
 
-  baseUrl: string = 'http://localhost:3000/articles';
+  baseUrl: string = `${environment.apiUrl}/articles`;
 
   constructor(private http: HttpClient) {}
 

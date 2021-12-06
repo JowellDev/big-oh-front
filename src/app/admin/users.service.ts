@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Subject, throwError } from 'rxjs';
 import { User } from '../shared/user.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class UsersService {
   usersChanged = new Subject<User[]>();
   adminsChanged = new Subject<User>();
 
-  baseURL: string = 'http://localhost:3000/admin';
+  baseURL: string = `${environment.apiUrl}/admin`;
   constructor(private http: HttpClient, private router: Router) {}
 
   getAllMembers() {

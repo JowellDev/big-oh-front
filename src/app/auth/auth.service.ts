@@ -4,14 +4,15 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from '../shared/user.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  signup_url: string = 'http://localhost:3000/auth/register';
-  signin_url: string = 'http://localhost:3000/auth/login';
-  admin_signin_url: string = 'http://localhost:3000/admin/login';
+  signup_url: string = `${environment.apiUrl}/auth/register`;
+  signin_url: string = `${environment.apiUrl}/auth/login`;
+  admin_signin_url: string = `${environment.apiUrl}/admin/login`;
 
   user = new BehaviorSubject<User>(null);
   tokenExpirationTimer: any;
