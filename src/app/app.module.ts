@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -5,7 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,7 +14,6 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesListComponent } from './articles/articles-list/articles-list.component';
 import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 import { ArticlesListItemComponent } from './articles/articles-list/articles-list-item/articles-list-item.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleContentComponent } from './articles/article-details/article-content/article-content.component';
 import { ArticleDescriptionComponent } from './articles/article-details/article-description/article-description.component';
@@ -23,20 +22,7 @@ import { ArticleCommentsCardComponent } from './articles/article-details/article
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
-
-import { AdminComponent } from './admin/admin.component';
-import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
-import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
-import { AdminArticlesListComponent } from './admin/admin-articles-list/admin-articles-list.component';
-import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
-import { AdminAdminsListComponent } from './admin/admin-admins-list/admin-admins-list.component';
-import { AdminArticlesListItemComponent } from './admin/admin-articles-list/admin-articles-list-item/admin-articles-list-item.component';
-import { AdminWelcomeComponent } from './admin/admin-welcome/admin-welcome.component';
-import { CreateArticleComponent } from './admin/create-article/create-article.component';
-import { UnpublishedArticlesComponent } from './admin/unpublished-articles/unpublished-articles.component';
-import { AdminArticleDetailsComponent } from './admin/admin-article-details/admin-article-details.component';
+import { ShareModule } from './share.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +33,6 @@ import { AdminArticleDetailsComponent } from './admin/admin-article-details/admi
     ArticlesListComponent,
     ArticleDetailsComponent,
     ArticlesListItemComponent,
-    SearchBarComponent,
     FooterComponent,
     ArticleContentComponent,
     ArticleDescriptionComponent,
@@ -55,27 +40,15 @@ import { AdminArticleDetailsComponent } from './admin/admin-article-details/admi
     ArticleCommentsCardComponent,
     RegisterComponent,
     LoginComponent,
-    AdminComponent,
-    AdminLoginComponent,
-    AdminDashboardComponent,
-    SidebarComponent,
-    AdminNavbarComponent,
-    AdminArticlesListComponent,
-    AdminUsersListComponent,
-    AdminAdminsListComponent,
-    AdminArticlesListItemComponent,
-    AdminWelcomeComponent,
-    CreateArticleComponent,
-    UnpublishedArticlesComponent,
-    AdminArticleDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminModule,
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    CKEditorModule,
+    ShareModule,
   ],
   providers: [
     {
